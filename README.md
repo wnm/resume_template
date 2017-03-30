@@ -11,4 +11,4 @@ You can use [RésuméExporter](https://github.com/programmercv/resume_exporter) 
 
 # Preview
 
-[![Résumé Preview Image](/preview.png)](/preview.png)
+[![Résumé Preview Image](/screen.png)](/screen.png)
