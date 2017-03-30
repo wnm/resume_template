@@ -3,6 +3,8 @@ ProgrammerCV jekyll template
 
 A jekyll template for résumés/cvs for software developers, based on the ProgrammerCV [résumé schema definition](https://github.com/programmercv/schema).
 
+[Example resume](https://programmercv.github.io/theme/)
+
 # Usage
 
 Clone this repo and replace [_data/resume.json](_data/resume.json) with your information.
