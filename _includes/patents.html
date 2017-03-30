@@ -1,0 +1,50 @@
+<div class="row patents section" id="patents">
+  <div class="col-12">
+    <h2 class="section-heading">Patents</h2>
+    <div class="section-summary">
+      {{ site.data.resume.patents.summary}}
+    </div>
+
+    {% for patent in site.data.resume.patents.history %}
+      <div class="patent entry">      
+        <div class="title">
+          <h3>
+            {% capture title %}<span class="patent-title">{{ patent.title }}</span>{% if patent.number %} <span class="number">({{ patent.number }})</span> {% endif %}{% endcapture %}
+            {% if patent.url %}
+              <a href="{{patent.url}}">{{title}}</a>
+            {% else %}
+              {{title}}
+            {% endif %}
+          </h3>
+        </div>
+        <div class="subtitle">        
+          <span class="status">
+            {{ patent.status }}
+          </span>
+          |
+          <span class="date">
+            {{  patent.date }}            
+          </span>
+        </div>        
+        <div class="description">
+          {{patent.description}}
+        </div>
+        <ul class="highlights">
+          <h4>Highlights</h4>
+          {% for highlight in patent.highlights %}
+            <li class="highlight">
+            {{ highlight }}
+            </li>
+           {% endfor %}
+        </ul>
+        <div class="keywords">
+          {% for keyword in patent.keywords %}
+            <span class="keyword tag">
+            {{ keyword }}
+            </span>
+           {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>

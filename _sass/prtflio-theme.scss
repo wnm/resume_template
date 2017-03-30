@@ -1,0 +1,109 @@
+@media print {
+  .noprint{
+    display: none !important;
+  }
+
+  .section .entry{
+    page-break-inside: avoid;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .md-only{
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .sm-only{
+    display: none !important;
+  }
+
+  .main, .sidebar{
+    padding-top: 15px;
+  }
+}
+
+@media screen, print {
+  @import 'bootstrap-grid';
+  @import 'bootstrap-reboot';
+  @import url('https://fonts.googleapis.com/css?family=PT+Serif');
+  body{
+    font-family: 'PT Serif', serif;
+    font-size: 16px;
+  }
+
+  a{
+    color: black;
+    font-weight: bold;
+    font-style: italic;
+  }
+
+  a:hover{
+    color: #cb0000;
+  }
+
+  .section, .entry{
+    margin-bottom: 50px;
+  }
+
+  .section-summary{
+    margin-bottom: 25px;
+  }
+
+  .section-heading{
+    font-size: 1.5em;
+    margin-top: 20px;
+    color: #cb0000;
+  }
+
+  .subtitle{
+    font-style: italic;
+  }
+
+  .entry .summary{
+    padding: 10px 0;
+  }
+
+  .name{
+    margin-top: 10px;
+    margin-bottom: 0px;
+    font-size: 1.5em;
+  }
+
+  .label{
+    margin-top: 0px;
+    font-size: 1em;
+  }
+
+  .sidebar .image img{
+    max-width: 100%;
+  }
+
+  .keyword{
+    background-color: #ffe3e3;
+    padding: 5px;
+    margin-right: 5px;
+  }
+
+  blockquote {
+    background: #f9f9f9;
+    border-left: 10px solid #ccc;
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+    quotes: "\201C""\201D""\2018""\2019";
+  }
+
+  blockquote:before {
+    color: #ccc;
+    content: open-quote;
+    font-size: 2em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+  }
+
+  blockquote p {
+    display: inline;
+  }
+}

@@ -1,0 +1,53 @@
+<div class="row employment section" id="employment">
+  <div class="col-12">
+    <h2 class="section-heading">Work Experience</h2>
+    <div class="section-summary">
+      {{ site.data.resume.employment.summary}}
+    </div>
+
+    {% for job in site.data.resume.employment.history %}
+      <div class="employment-entry entry">      
+        <div class="employer title">
+          <h3>
+            {% if job.url %}
+              <a href="{{job.url}}">{{job.employer}}</a>
+            {% else %}
+              {{job.employer}}
+            {% endif %}
+          </h3>
+        </div>
+        <div class="subtitle">        
+          <span class="position">
+            {{job.position}} 
+          </span>
+          |
+          <span class="date">
+            {% capture dates  %}{{ job.startDate }}{% if job.startDate and job.endDate%} - {% endif %} {{job.endDate}}{%endcapture%}
+            {{  dates }}            
+          </span>
+        </div>
+        <div class="location">
+          {{job.location}}
+        </div>
+        <div class="summary">
+          {{job.summary}}
+        </div>
+        <ul class="highlights">
+          <h4>Highlights</h4>
+          {% for highlight in job.highlights %}
+            <li class="highlight">
+            {{ highlight }}
+            </li>
+           {% endfor %}
+        </ul>
+        <div class="keywords">
+          {% for keyword in job.keywords %}
+            <span class="keyword tag">
+            {{ keyword }}
+            </span>
+           {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>

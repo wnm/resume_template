@@ -1,0 +1,18 @@
+<div class="row social">
+  <div class="col-12">      
+    {% for social in site.data.resume.basics.contact.social %}
+      <div class="social-entry">          
+        <span class="network">
+          {{social.network}}:
+        </span>
+        <span class="user">
+          {% if social.url %}
+            <a href="{{social.url}}">{{social.user}}</a>
+          {% else %}
+            {{social.user}}
+          {% endif %}
+        </span>
+      </div>
+    {% endfor %}
+  </div>
+</div>

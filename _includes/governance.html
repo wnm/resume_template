@@ -1,0 +1,55 @@
+<div class="row governance section" id="governance">
+  <div class="col-12">
+    <h2 class="section-heading">Governance</h2>
+    <div class="section-summary">
+      {{ site.data.resume.governance.summary}}
+    </div>
+
+    {% for governance_entry in site.data.resume.governance.history %}
+      <div class="governance_entry entry">      
+        <div class="organization">
+          <h3>
+            {% if governance_entry.url %}
+              <a href="{{governance_entry.url}}">{{governance_entry.organization}}</a>
+            {% else %}
+              {{governance_entry.organization}}
+            {% endif %}
+          </h3>
+        </div>
+        <div class="subtitle">        
+          <span>
+            {% capture subtitle %}<span class="category">{{ governance_entry.category }}</span>{% if governance_entry.category and governance_entry.location %}, {% endif %}<span class="location">{{ governance_entry.location }}</span>{% endcapture %}
+            {{ subtitle }}
+          </span>
+          |
+          <span class="date">
+            {% capture dates  %}{{ governance_entry.startDate }}{% if governance_entry.startDate and governance_entry.endDate%} - {% endif %} {{governance_entry.endDate}}{%endcapture%}
+            {{  dates }}            
+          </span>
+        </div>
+        <div class="summary">
+          {{governance_entry.summary}}
+        </div>
+        <div class="roles">
+          <h4>Roles</h4>
+          {{ governance_entry.roles | join: (", ") }}
+        </div>
+        <ul class="highlights">
+          <h4>Highlights</h4>
+          {% for highlight in governance_entry.highlights %}
+            <li class="highlight">
+            {{ highlight }}
+            </li>
+           {% endfor %}
+        </ul>
+        <div class="keywords">
+          {% for keyword in governance_entry.keywords %}
+            <span class="keyword tag">
+            {{ keyword }}
+            </span>
+           {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>

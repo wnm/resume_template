@@ -1,0 +1,50 @@
+<div class="row writing section" id="writing">
+  <div class="col-12">
+    <h2 class="section-heading">Writing</h2>
+    <div class="section-summary">
+      {{ site.data.resume.writing.summary}}
+    </div>
+
+    {% for writing_entry in site.data.resume.writing.history %}
+      <div class="writing_entry entry">      
+        <div class="title">
+          <h3>
+            {% if writing_entry.url %}
+              <a href="{{writing_entry.url}}">{{writing_entry.title}}</a>
+            {% else %}
+              {{writing_entry.title}}
+            {% endif %}
+          </h3>
+        </div>
+        <div class="subtitle">        
+          <span>
+            {% capture subtitle %}<span class="category">{{ writing_entry.category }}</span>{% if writing_entry.category and writing_entry.publisher %}, {% endif %}<span class="publisher">{{ writing_entry.publisher }}</span>{% endcapture %}
+            {{ subtitle }}
+          </span>
+          |
+          <span class="date">
+            {{  writing_entry.date }}            
+          </span>
+        </div>        
+        <div class="summary">
+          {{writing_entry.summary}}
+        </div>
+        <ul class="highlights">
+          <h4>Highlights</h4>
+          {% for highlight in writing_entry.highlights %}
+            <li class="highlight">
+            {{ highlight }}
+            </li>
+           {% endfor %}
+        </ul>
+        <div class="keywords">
+          {% for keyword in writing_entry.keywords %}
+            <span class="keyword tag">
+            {{ keyword }}
+            </span>
+           {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>

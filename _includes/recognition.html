@@ -1,0 +1,50 @@
+<div class="row recognition section" id="recognition">
+  <div class="col-12">
+    <h2 class="section-heading">Recognition</h2>
+    <div class="section-summary">
+      {{ site.data.resume.recognition.summary}}
+    </div>
+
+    {% for recognition_entry in site.data.resume.recognition.history %}
+      <div class="recognition_entry entry">      
+        <div class="title">
+          <h3>
+            {% if recognition_entry.url %}
+              <a href="{{recognition_entry.url}}">{{recognition_entry.title}}</a>
+            {% else %}
+              {{recognition_entry.title}}
+            {% endif %}
+          </h3>
+        </div>
+        <div class="subtitle">        
+          <span>
+            {% capture subtitle %}<span class="category">{{ recognition_entry.category }}</span>{% if recognition_entry.category and recognition_entry.from %}, {% endif %}<span class="from">{{ recognition_entry.from }}</span>{% endcapture %}
+            {{ subtitle }}
+          </span>
+          |
+          <span class="date">
+            {{  recognition_entry.date }}            
+          </span>
+        </div>        
+        <div class="summary">
+          {{recognition_entry.summary}}
+        </div>
+        <ul class="highlights">
+          <h4>Highlights</h4>
+          {% for highlight in recognition_entry.highlights %}
+            <li class="highlight">
+            {{ highlight }}
+            </li>
+           {% endfor %}
+        </ul>
+        <div class="keywords">
+          {% for keyword in recognition_entry.keywords %}
+            <span class="keyword tag">
+            {{ keyword }}
+            </span>
+           {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>

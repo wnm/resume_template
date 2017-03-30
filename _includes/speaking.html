@@ -1,0 +1,50 @@
+<div class="row speaking section" id="speaking">
+  <div class="col-12">
+    <h2 class="section-heading">Speaking</h2>
+    <div class="section-summary">
+      {{ site.data.resume.speaking.summary}}
+    </div>
+
+    {% for speaking_entry in site.data.resume.speaking.history %}
+      <div class="speaking_entry entry">      
+        <div class="title">
+          <h3>
+            {% if speaking_entry.url %}
+              <a href="{{speaking_entry.url}}">{{speaking_entry.title}}</a>
+            {% else %}
+              {{speaking_entry.title}}
+            {% endif %}
+          </h3>
+        </div>
+        <div class="subtitle">        
+          <span>
+            {% capture subtitle %}<span class="event">{{ speaking_entry.event }}</span>{% if speaking_entry.event and speaking_entry.location %}, {% endif %}<span class="location">{{ speaking_entry.location }}</span>{% endcapture %}
+            {{ subtitle }}
+          </span>
+          |
+          <span class="date">
+            {{  speaking_entry.date }}            
+          </span>
+        </div>        
+        <div class="summary">
+          {{speaking_entry.summary}}
+        </div>
+        <ul class="highlights">
+          <h4>Highlights</h4>
+          {% for highlight in speaking_entry.highlights %}
+            <li class="highlight">
+            {{ highlight }}
+            </li>
+           {% endfor %}
+        </ul>
+        <div class="keywords">
+          {% for keyword in speaking_entry.keywords %}
+            <span class="keyword tag">
+            {{ keyword }}
+            </span>
+           {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>

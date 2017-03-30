@@ -1,0 +1,21 @@
+<div class="row references section" id="references">
+  <div class="col-12">
+    <h2 class="section-heading">References</h2>
+    <div class="section-summary">
+      {{ site.data.resume.references.summary}}
+    </div>
+
+    {% for reference in site.data.resume.references.history %}
+      <div class="reference-entry entry">
+        <h3 class="name">{{reference.name}}</h3>
+        <div class="subtitle">
+          {% capture subtitle %}<span class="role">{{ reference.role }}</span>{% if reference.role and reference.company %}, {% endif %}<span class="company">{{ reference.company }}</span>{% endcapture %}
+            {{ subtitle }}
+        </div>
+        <div class="summary">
+          <blockquote>{{reference.summary}}</blockquote>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>

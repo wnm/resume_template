@@ -1,0 +1,19 @@
+<div class="row interests section" id="interests">
+  <div class="col-12">
+    <h2 class="section-heading">Interests</h2>
+    <div class="section-summary">
+      {{ site.data.resume.interests.summary}}
+    </div>
+
+    {% for interest in site.data.resume.interests.history %}
+      <div class="interest-entry entry">
+        <div class="name">
+          {{interest.name}}
+        </div>
+        <div class="description">
+          {{interest.description}}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
