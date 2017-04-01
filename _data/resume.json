@@ -158,7 +158,7 @@
 
   "skills": {
     "summary": "I have been programming for over 20 years, 10 of those professionaly as an employed software engineer. In the last 5 years of my career I have specialized in cyber security.",
-    "history": [
+    "sets": [
       {
         "name": "Computer Security",
         "description": "Although to completely secure a system you have to know every layer of the stack, there are some common tools that I use on a regular basis.",
@@ -213,7 +213,8 @@
       {
         "category": "Award",
         "title": "Google Summer of Code",
-        "date": "01.01.2012",
+        "startDate": "01.01.2012",
+        "endDate": "",
         "from": "Google",
         "summary": "Google Summer of Code is a global program that offers post-secondary student developers stipends to write code for various open source software projects. ",
         "url": "https://en.wikipedia.org/wiki/Google_Summer_of_Code",
@@ -302,7 +303,7 @@
 
   "languages": {
     "summary": "I was born and grew up in the US, so english is my native language. Currently I'm learning basic french on duolingo.",
-    "history": [
+    "list": [
       {
         "language": "English",
         "level": "Native",
@@ -318,7 +319,7 @@
 
   "interests": {
     "summary": "",
-    "history": [
+    "list": [
       {
         "name": "Arduino",
         "description": "I love to play around with hardware once in a while. I build myself a simple cellphone (on Arduino). Next I want remove the arduino, and custom print my chip design to get the size down."
@@ -330,7 +331,7 @@
     ]
   },
 
-  "extracurriculars": {
+  "extracurricular": {
     "summary": "",
     "history": [
       {
@@ -349,7 +350,7 @@
     ]
   },
 
-  "affiliations": {
+  "affiliation": {
     "summary": "I'm a member of a few non-profit organizations related to internet privacy, I'm most involved with the EFF, though.",
     "history": [
       {
