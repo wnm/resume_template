@@ -1,21 +1,34 @@
-<div class="row references section" id="references">
-  <div class="col-12">
-    <h2 class="section-heading">References</h2>
-    <div class="section-summary">
-      {{ site.data.resume.references.summary}}
-    </div>
+{% if site.data.resume.references.size > 0 %}
+  <div class="row references section" id="references">
+    <div class="col-12">
+      <h2 class="section-heading">References</h2>
 
-    {% for reference in site.data.resume.references.history %}
-      <div class="reference-entry entry">
-        <h3 class="name">{{reference.name}}</h3>
-        <div class="subtitle">
-          {% capture subtitle %}<span class="role">{{ reference.role }}</span>{% if reference.role and reference.company %}, {% endif %}<span class="company">{{ reference.company }}</span>{% endcapture %}
-            {{ subtitle }}
+      {% if site.data.resume.references.summary %}
+        <div class="section-summary">
+          {{ site.data.resume.references.summary }}
         </div>
-        <div class="summary">
-          <blockquote>{{reference.summary}}</blockquote>
+      {% endif %}
+
+      {% for reference in site.data.resume.references.history %}
+        <div class="reference-entry entry">
+          {% if reference.name %}
+            <h3 class="name">{{reference.name}}</h3>
+          {% endif %}
+          
+          {% if reference.role or reference.company %}
+            <div class="subtitle">
+              {% capture subtitle %}<span class="role">{{ reference.role }}</span>{% if reference.role and reference.company %}, {% endif %}<span class="company">{{ reference.company }}</span>{% endcapture %}
+                {{ subtitle }}
+            </div>
+          {% endif %}
+
+          {% if reference.summary %}
+            <div class="summary">
+              <blockquote>{{reference.summary}}</blockquote>
+            </div>
+          {% endif %}
         </div>
-      </div>
-    {% endfor %}
+      {% endfor %}
+    </div>
   </div>
-</div>
+{% endif %}

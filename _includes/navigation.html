@@ -1,63 +1,122 @@
-<div class="row navigation noprint">
-  <div class="col-12">        
-    <h2 class="section-heading">Jump to:</h2>
+{% if site.data.resume.languages.size > 0 or site.data.resume.employment.size > 0 or site.data.resume.education.size > 0 or site.data.resume.references.size > 0 or site.data.resume.projects.size > 0 or site.data.resume.openSource.size > 0 or site.data.resume.qualifications.size > 0 or site.data.resume.skills.size > 0 or site.data.resume.recognition.size > 0 or site.data.resume.writing.size > 0 or site.data.resume.reading.size > 0 or site.data.resume.speaking.size > 0 or site.data.resume.patents.size > 0 or site.data.resume.languages.size > 0 or site.data.resume.extracurricular.size > 0 or site.data.resume.affiliation.size > 0 or site.data.resume.governance.size > 0 or site.data.resume.service.size > 0 or site.data.resume.interests.size > 0 %}
+  <div class="row navigation noprint">
+    <div class="col-12">        
+      <h2 class="section-heading">Jump to:</h2>
 
-    <div class="navigation-link">
-      <a href="#disposition">Disposition</a>
-    </div>
-    <div class="navigation-link">
-      <a href="#employment">Work Experience</a>
-    </div>
-    <div class="navigation-link">
-      <a href="#education">Education</a>
-    </div>
-    <div class="navigation-link">
-      <a href="#references">References</a>
-    </div>
-    <div class="navigation-link">
-      <a href="#projects">Projects</a>
-    </div>
-    <div class="navigation-link">
-      <a href="#open_source">Open Source</a>
-    </div>
-    <div class="navigation-link">
-      <a href="#qualifications">Qualifications</a>
-    </div>
-    <div class="navigation-link">
-      <a href="#skills">Skills</a>
-    </div>
-    <div class="navigation-link">
-      <a href="#recognition">Recognition</a>
-    </div>
-    <div class="navigation-link">
-      <a href="#writing">Writing</a>
-    </div>
-    <div class="navigation-link">
-      <a href="#reading">Reading</a>
-    </div>
-    <div class="navigation-link">
-      <a href="#speaking">Speaking</a>
-    </div>
-    <div class="navigation-link">
-      <a href="#patents">Patents</a>
-    </div>
-    <div class="navigation-link">
-      <a href="#languages">Languages</a>
-    </div>
-    <div class="navigation-link">
-      <a href="#extracurriculars">Extracurriculars</a>
-    </div>
-    <div class="navigation-link">
-      <a href="#affiliations">Affiliations</a>
-    </div>
-    <div class="navigation-link">
-      <a href="#governance">Governance</a>
-    </div>
-    <div class="navigation-link">
-      <a href="#service">Service</a>
-    </div>
-    <div class="navigation-link">
-      <a href="#interests">Interests</a>
+      {% if site.data.resume.languages.size > 0 %}
+        <div class="navigation-link">
+          <a href="#disposition">Disposition</a>
+        </div>
+      {% endif %}
+
+      {% if site.data.resume.employment.size > 0 %}
+        <div class="navigation-link">
+          <a href="#employment">Work Experience</a>
+        </div>
+      {% endif %}
+
+      {% if site.data.resume.education.size > 0 %}
+        <div class="navigation-link">
+          <a href="#education">Education</a>
+        </div>
+      {% endif %}
+
+      {% if site.data.resume.references.size > 0 %}
+        <div class="navigation-link">
+          <a href="#references">References</a>
+        </div>
+      {% endif %}
+
+      {% if site.data.resume.projects.size > 0 %}
+        <div class="navigation-link">
+          <a href="#projects">Projects</a>
+        </div>
+      {% endif %}
+
+      {% if site.data.resume.openSource.size > 0 %}
+        <div class="navigation-link">
+          <a href="#open_source">Open Source</a>
+        </div>
+      {% endif %}
+
+      {% if site.data.resume.qualifications.size > 0 %}
+        <div class="navigation-link">
+          <a href="#qualifications">Qualifications</a>
+        </div>
+      {% endif %}
+
+      {% if site.data.resume.skills.size > 0 %}
+        <div class="navigation-link">
+          <a href="#skills">Skills</a>
+        </div>
+      {% endif %}
+
+      {% if site.data.resume.recognition.size > 0 %}
+        <div class="navigation-link">
+          <a href="#recognition">Recognition</a>
+        </div>
+      {% endif %}
+
+      {% if site.data.resume.writing.size > 0 %}
+        <div class="navigation-link">
+          <a href="#writing">Writing</a>
+        </div>
+      {% endif %}
+
+      {% if site.data.resume.reading.size > 0 %}
+        <div class="navigation-link">
+          <a href="#reading">Reading</a>
+        </div>
+      {% endif %}
+
+      {% if site.data.resume.speaking.size > 0 %}
+        <div class="navigation-link">
+          <a href="#speaking">Speaking</a>
+        </div>
+      {% endif %}
+
+      {% if site.data.resume.patents.size > 0 %}
+        <div class="navigation-link">
+          <a href="#patents">Patents</a>
+        </div>
+      {% endif %}
+
+      {% if site.data.resume.languages.size > 0 %}
+        <div class="navigation-link">
+          <a href="#languages">Languages</a>
+        </div>
+      {% endif %}
+
+      {% if site.data.resume.extracurricular.size > 0 %}
+        <div class="navigation-link">
+          <a href="#extracurricular">Extracurricular</a>
+        </div>
+      {% endif %}
+
+      {% if site.data.resume.affiliation.size > 0 %}
+        <div class="navigation-link">
+          <a href="#affiliation">Affiliation</a>
+        </div>
+      {% endif %}
+
+      {% if site.data.resume.governance.size > 0 %}
+        <div class="navigation-link">
+          <a href="#governance">Governance</a>
+        </div>
+      {% endif %}
+
+      {% if site.data.resume.service.size > 0 %}
+        <div class="navigation-link">
+          <a href="#service">Service</a>
+        </div>
+      {% endif %}
+
+      {% if site.data.resume.interests.size > 0 %}
+        <div class="navigation-link">
+          <a href="#interests">Interests</a>
+        </div>
+      {% endif %}
+
     </div>
   </div>
-</div>
+{% endif %}

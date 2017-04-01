@@ -1,18 +1,28 @@
-<div class="row languages section" id="languages">
-  <div class="col-12">
-    <h2 class="section-heading">Languages</h2>
-    <div class="section-summary">
-      {{ site.data.resume.languages.summary}}
-    </div>
+{% if site.data.resume.languages.size > 0 %}
+  <div class="row languages section" id="languages">
+    <div class="col-12">
+      <h2 class="section-heading">Languages</h2>
 
-    {% for language in site.data.resume.languages.history %}
-      <div class="language-entry entry">
-        <div class="language">
-          {{language.language}}
+      {% if site.data.resume.languages.summary %}
+        <div class="section-summary">
+          {{ site.data.resume.languages.summary }}
         </div>
-        <div class="level">
-          {{language.level}} {% if language.years %}({{language.years}} years){% endif %}
-        </div>
-    {% endfor %}
+      {% endif %}
+
+      {% for language in site.data.resume.languages.list %}
+        <div class="language-entry entry">
+          
+          {% if language.language %}  
+            <div class="language">
+              <strong>{{language.language}}:</strong>
+              {% if language.level or language.years %}
+                <span class="level">
+                  {{language.level}}{% if language.years %}, {{language.years}} year(s){% endif %}
+                </span>
+              {% endif %}
+            </div>
+          {% endif %}
+      {% endfor %}
+    </div>
   </div>
-</div>
+{% endif %}

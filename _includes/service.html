@@ -1,55 +1,83 @@
-<div class="row service section" id="service">
-  <div class="col-12">
-    <h2 class="section-heading">Service</h2>
-    <div class="section-summary">
-      {{ site.data.resume.service.summary}}
-    </div>
+{% if site.data.resume.service.size > 0 %}
+  <div class="row service section" id="service">
+    <div class="col-12">
+      <h2 class="section-heading">Service</h2>
 
-    {% for service_entry in site.data.resume.service.history %}
-      <div class="service_entry-entry entry">      
-        <div class="organization">
-          <h3>
-            {% if service_entry.url %}
-              <a href="{{service_entry.url}}">{{service_entry.organization}}</a>
-            {% else %}
-              {{service_entry.organization}}
-            {% endif %}
-          </h3>
+      {% if site.data.resume.service.summary %}
+        <div class="section-summary">
+          {{ site.data.resume.service.summary }}
         </div>
-        <div class="subtitle">        
-          <span>
-            {% capture subtitle %}<span class="category">{{ service_entry.category }}</span>{% if service_entry.category and service_entry.location %}, {% endif %}<span class="location">{{ service_entry.location }}</span>{% endcapture %}
-            {{ subtitle }}
-          </span>
-          |
-          <span class="date">
-            {% capture dates  %}{{ service_entry.startDate }}{% if service_entry.startDate and service_entry.endDate%} - {% endif %} {{service_entry.endDate}}{%endcapture%}
-            {{  dates }}            
-          </span>
+      {% endif %}
+
+      {% for service_entry in site.data.resume.service.history %}
+        <div class="service_entry-entry entry">
+
+          {% if service_entry.organization %}
+            <div class="organization">
+              <h3>
+                {% if service_entry.url %}
+                  <a href="{{service_entry.url}}">{{service_entry.organization}}</a>
+                {% else %}
+                  {{service_entry.organization}}
+                {% endif %}
+              </h3>
+            </div>
+          {% endif %}
+
+          {% if service_entry.category or service_entry.location or service_entry.startDate or service_entry.endDate %}
+            <div class="subtitle">        
+              {% if service_entry.category or service_entry.location %}
+                <span>
+                  {% capture subtitle %}<span class="category">{{ service_entry.category }}</span>{% if service_entry.category and service_entry.location %}, {% endif %}<span class="location">{{ service_entry.location }}</span>{% endcapture %}
+                  {{ subtitle }}
+                </span>
+                |
+              {% endif %}
+              <span class="date">
+                {% capture dates  %}{{ service_entry.startDate }}{% if service_entry.startDate and service_entry.endDate%} - {% endif %} {{service_entry.endDate}}{%endcapture%}
+                {{  dates }}            
+              </span>
+            </div>
+          {% endif %}
+
+          {% if service_entry.summary %}
+            <div class="summary">
+              {{service_entry.summary}}
+            </div>
+          {% endif %}
+
+          {% if service_entry.roles %}
+            <div class="roles">
+              <h4>Roles</h4>
+              {{ service_entry.roles | join: (", ") }}
+            </div>
+          {% endif %}
+
+          {% if service_entry.highlights %}
+            <div class="highlights">          
+              <h4>Highlights</h4>
+              <ul>
+                {% for highlight in service_entry.highlights %}
+                  <li class="highlight">
+                  {{ highlight }}
+                  </li>
+                 {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+
+          {% if service_entry.keywords %}
+            <div class="keywords">
+              {% for keyword in service_entry.keywords %}
+                <span class="keyword tag">
+                {{ keyword }}
+                </span>
+               {% endfor %}
+            </div>
+          {% endif %}
+
         </div>
-        <div class="summary">
-          {{service_entry.summary}}
-        </div>
-        <div class="roles">
-          <h4>Roles</h4>
-          {{ service_entry.roles | join: (", ") }}
-        </div>
-        <ul class="highlights">
-          <h4>Highlights</h4>
-          {% for highlight in service_entry.highlights %}
-            <li class="highlight">
-            {{ highlight }}
-            </li>
-           {% endfor %}
-        </ul>
-        <div class="keywords">
-          {% for keyword in service_entry.keywords %}
-            <span class="keyword tag">
-            {{ keyword }}
-            </span>
-           {% endfor %}
-        </div>
-      </div>
-    {% endfor %}
+      {% endfor %}
+    </div>
   </div>
-</div>
+{% endif %}

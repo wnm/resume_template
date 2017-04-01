@@ -1,50 +1,73 @@
-<div class="row speaking section" id="speaking">
-  <div class="col-12">
-    <h2 class="section-heading">Speaking</h2>
-    <div class="section-summary">
-      {{ site.data.resume.speaking.summary}}
-    </div>
+{% if site.data.resume.speaking.size > 0 %}
+  <div class="row speaking section" id="speaking">
+    <div class="col-12">
+      <h2 class="section-heading">Speaking</h2>
 
-    {% for speaking_entry in site.data.resume.speaking.history %}
-      <div class="speaking_entry entry">      
-        <div class="title">
-          <h3>
-            {% if speaking_entry.url %}
-              <a href="{{speaking_entry.url}}">{{speaking_entry.title}}</a>
-            {% else %}
-              {{speaking_entry.title}}
-            {% endif %}
-          </h3>
+      {% if site.data.resume.speaking.summary %}
+        <div class="section-summary">
+          {{ site.data.resume.speaking.summary }}
         </div>
-        <div class="subtitle">        
-          <span>
-            {% capture subtitle %}<span class="event">{{ speaking_entry.event }}</span>{% if speaking_entry.event and speaking_entry.location %}, {% endif %}<span class="location">{{ speaking_entry.location }}</span>{% endcapture %}
-            {{ subtitle }}
-          </span>
-          |
-          <span class="date">
-            {{  speaking_entry.date }}            
-          </span>
-        </div>        
-        <div class="summary">
-          {{speaking_entry.summary}}
+      {% endif %}
+
+      {% for speaking_entry in site.data.resume.speaking.history %}
+        <div class="speaking_entry entry">      
+          
+          {% if speaking_entry.title %}
+            <div class="title">
+              <h3>
+                {% if speaking_entry.url %}
+                  <a href="{{speaking_entry.url}}">{{speaking_entry.title}}</a>
+                {% else %}
+                  {{speaking_entry.title}}
+                {% endif %}
+              </h3>
+            </div>
+          {% endif %}
+
+          {% if speaking_entry.event or speaking_entry.location or speaking_entry.date %}
+            <div class="subtitle">        
+              <span>
+                {% capture subtitle %}<span class="event">{{ speaking_entry.event }}</span>{% if speaking_entry.event and speaking_entry.location %}, {% endif %}<span class="location">{{ speaking_entry.location }}</span>{% endcapture %}
+                {{ subtitle }}
+              </span>
+              |
+              <span class="date">
+                {{  speaking_entry.date }}            
+              </span>
+            </div>
+          {% endif %}
+
+          {% if speaking_entry.summary %}
+            <div class="summary">
+              {{speaking_entry.summary}}
+            </div>
+          {% endif %}
+
+          {% if speaking_entry.highlights %}
+            <div class="highlights">          
+              <h4>Highlights</h4>
+              <ul>
+                {% for highlight in speaking_entry.highlights %}
+                  <li class="highlight">
+                  {{ highlight }}
+                  </li>
+                 {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+
+          {% if speaking_entry.keywords %}
+            <div class="keywords">
+              {% for keyword in speaking_entry.keywords %}
+                <span class="keyword tag">
+                {{ keyword }}
+                </span>
+               {% endfor %}
+            </div>
+          {% endif %}
+
         </div>
-        <ul class="highlights">
-          <h4>Highlights</h4>
-          {% for highlight in speaking_entry.highlights %}
-            <li class="highlight">
-            {{ highlight }}
-            </li>
-           {% endfor %}
-        </ul>
-        <div class="keywords">
-          {% for keyword in speaking_entry.keywords %}
-            <span class="keyword tag">
-            {{ keyword }}
-            </span>
-           {% endfor %}
-        </div>
-      </div>
-    {% endfor %}
+      {% endfor %}
+    </div>
   </div>
-</div>
+{% endif %}

@@ -1,19 +1,28 @@
-<div class="row interests section" id="interests">
-  <div class="col-12">
-    <h2 class="section-heading">Interests</h2>
-    <div class="section-summary">
-      {{ site.data.resume.interests.summary}}
-    </div>
+{% if site.data.resume.interests.size > 0 %}
+  <div class="row interests section" id="interests">
+    <div class="col-12">
+      <h2 class="section-heading">Interests</h2>
+      {% if site.data.resume.interests.summary %}
+        <div class="section-summary">
+          {{ site.data.resume.interests.summary}}
+        </div>
+      {% endif %}
 
-    {% for interest in site.data.resume.interests.history %}
-      <div class="interest-entry entry">
-        <div class="name">
-          {{interest.name}}
+      {% for interest in site.data.resume.interests.list %}
+        <div class="interest-entry entry">
+          {% if interest.name %}
+            <div class="name">
+              {{interest.name}}
+            </div>
+          {% endif %}
+
+          {% if interest.description %}
+            <div class="description">
+              {{interest.description}}
+            </div>
+          {% endif %}
         </div>
-        <div class="description">
-          {{interest.description}}
-        </div>
-      </div>
-    {% endfor %}
+      {% endfor %}
+    </div>
   </div>
-</div>
+{% endif %}

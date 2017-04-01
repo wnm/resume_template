@@ -1,26 +1,41 @@
-<div class="row skills section" id="skills">
-  <div class="col-12">
-    <h2 class="section-heading">Skills</h2>
-    <div class="section-summary">
-      {{ site.data.resume.skills.summary}}
-    </div>
+{% if site.data.resume.skills.size > 0 %}
+  <div class="row skills section" id="skills">
+    <div class="col-12">
+      <h2 class="section-heading">Skills</h2>
+      
+      {% if site.data.resume.skills.summary %}
+        <div class="section-summary">
+          {{ site.data.resume.skills.summary }}
+        </div>
+      {% endif %}
 
-    {% for skill in site.data.resume.skills.history %}
-      <div class="skill-entry entry">
-        <div class="name">
-          {{skill.name}}
+      {% for skill in site.data.resume.skills.sets %}
+        <div class="skill-entry entry">
+
+          {% if skill.name %}
+            <div class="name">
+              {{skill.name}}
+            </div>
+          {% endif %}
+
+          {% if skill.description %}
+            <div class="description">
+              {{skill.description}}
+            </div>
+          {% endif %}
+
+          {% if skill.keywords %}
+            <div class="keywords">
+              {% for keyword in skill.keywords %}
+                <span class="keyword tag">
+                {{ keyword }}
+                </span>
+               {% endfor %}
+            </div>
+          {% endif %}
+
         </div>
-        <div class="description">
-          {{skill.description}}
-        </div>
-        <div class="keywords">
-          {% for keyword in skill.keywords %}
-            <span class="keyword tag">
-            {{ keyword }}
-            </span>
-           {% endfor %}
-        </div>
-      </div>
-    {% endfor %}
+      {% endfor %}
+    </div>
   </div>
-</div>
+{% endif %}

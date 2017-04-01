@@ -1,57 +1,88 @@
-<div class="row open_source section" id="open_source">
-  <div class="col-12">
-    <h2 class="section-heading">Open Source</h2>
-    <div class="section-summary">
-      {{ site.data.resume.openSource.summary}}
-    </div>
+{% if site.data.resume.openSource.size > 0 %}
+  <div class="row open_source section" id="open_source">
+    <div class="col-12">
+      <h2 class="section-heading">Open Source</h2>
 
-    {% for open_source in site.data.resume.openSource.history %}
-      <div class="open_source-entry entry">      
-        <div class="title">
-          <h3>
-            {% if open_source.url %}
-              <a href="{{open_source.url}}">{{open_source.title}}</a>
-            {% else %}
-              {{open_source.title}}
-            {% endif %}
-          </h3>
+      {% if site.data.resume.openSource.summary %}
+        <div class="section-summary">
+          {{ site.data.resume.openSource.summary }}
         </div>
-        <div class="subtitle">        
-          <span class="category">
-            {{open_source.category}} 
-          </span>
-          |
-          <span class="date">
-            {% capture dates  %}{{ open_source.startDate }}{% if open_source.startDate and open_source.endDate%} - {% endif %} {{open_source.endDate}}{%endcapture%}
-            {{  dates }}            
-          </span>
+      {% endif %}
+
+      {% for open_source in site.data.resume.openSource.history %}
+        <div class="open_source-entry entry">      
+          {% if open_source.title %}
+            <div class="title">
+              <h3>
+                {% if open_source.url %}
+                  <a href="{{open_source.url}}">{{open_source.title}}</a>
+                {% else %}
+                  {{open_source.title}}
+                {% endif %}
+              </h3>
+            </div>
+          {% endif %}
+
+          {% if open_source.category or open_source.startDate or open_source.endDate %}  
+            <div class="subtitle">        
+              {% if open_source.category %}  
+                <span class="category">
+                  {{open_source.category}} 
+                </span>
+                |
+              {% endif %}
+
+              <span class="date">
+                {% capture dates  %}{{ open_source.startDate }}{% if open_source.startDate and open_source.endDate%} - {% endif %} {{open_source.endDate}}{%endcapture%}
+                {{  dates }}            
+              </span>
+            </div>
+          {% endif %}
+
+          {% if open_source.repo %}
+            <div class="repo">
+              <a href="{{open_source.repo}}">{{open_source.repo}}</a>
+            </div>
+          {% endif %}
+
+          {% if open_source.description %}
+            <div class="description">
+              {{open_source.description}}
+            </div>
+          {% endif %}
+
+          {% if open_source.roles %}
+            <div class="roles">
+              <h4>Roles</h4>
+              {{ open_source.roles | join: (", ") }}
+            </div>
+          {% endif %}
+
+          {% if open_source.highlights %}
+            <div class="highlights">          
+              <h4>Highlights</h4>
+              <ul>
+                {% for highlight in open_source.highlights %}
+                  <li class="highlight">
+                  {{ highlight }}
+                  </li>
+                 {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+
+          {% if open_source.keywords %}
+            <div class="keywords">
+              {% for keyword in open_source.keywords %}
+                <span class="keyword tag">
+                {{ keyword }}
+                </span>
+               {% endfor %}
+            </div>
+          {% endif %}
+
         </div>
-        <div class="repo">
-          <a href="{{open_source.repo}}">{{open_source.repo}}</a>
-        </div>
-        <div class="description">
-          {{open_source.description}}
-        </div>
-        <div class="roles">
-          <h4>Roles</h4>
-          {{ open_source.roles | join: (", ") }}
-        </div>
-        <ul class="highlights">
-          <h4>Highlights</h4>
-          {% for highlight in open_source.highlights %}
-            <li class="highlight">
-            {{ highlight }}
-            </li>
-           {% endfor %}
-        </ul>
-        <div class="keywords">
-          {% for keyword in open_source.keywords %}
-            <span class="keyword tag">
-            {{ keyword }}
-            </span>
-           {% endfor %}
-        </div>
-      </div>
-    {% endfor %}
+      {% endfor %}
+    </div>
   </div>
-</div>
+{% endif %}

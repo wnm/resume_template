@@ -1,51 +1,76 @@
-<div class="row qualifications section" id="qualifications">
-  <div class="col-12">
-    <h2 class="section-heading">Qualifications</h2>
-    <div class="section-summary">
-      {{ site.data.resume.qualifications.summary}}
-    </div>
+{% if site.data.resume.qualifications.size > 0 %}
+  <div class="row qualifications section" id="qualifications">
+    <div class="col-12">
+      <h2 class="section-heading">Qualifications</h2>
 
-    {% for qualification in site.data.resume.qualifications.history %}
-      <div class="qualification-entry entry">      
-        <div class="title">
-          <h3>
-            {% if qualification.url %}
-              <a href="{{qualification.url}}">{{qualification.title}}</a>
-            {% else %}
-              {{qualification.title}}
-            {% endif %}
-          </h3>
+      {% if site.data.resume.qualifications.summary %}
+        <div class="section-summary">
+          {{ site.data.resume.qualifications.summary }}
         </div>
-        <div class="subtitle">        
-          <span>
-            {% capture subtitle %}<span class="category">{{ qualification.category }}</span>{% if qualification.category and qualification.from %}, {% endif %}<span class="from">{{ qualification.from }}</span>{% endcapture %}
-            {{ subtitle }}
-          </span>
-          |
-          <span class="date">
-            {% capture dates  %}{{ qualification.startDate }}{% if qualification.startDate and qualification.endDate%} - {% endif %} {{qualification.endDate}}{%endcapture%}
-            {{  dates }}            
-          </span>
-        </div>        
-        <div class="summary">
-          {{qualification.summary}}
+      {% endif %}
+
+      {% for qualification in site.data.resume.qualifications.history %}
+        <div class="qualification-entry entry">      
+
+          {% if qualification.title %}  
+            <div class="title">
+              <h3>
+                {% if qualification.url %}
+                  <a href="{{qualification.url}}">{{qualification.title}}</a>
+                {% else %}
+                  {{qualification.title}}
+                {% endif %}
+              </h3>
+            </div>
+          {% endif %}
+
+          {% if qualification.category or qualification.from or qualification.startDate or qualification.endDate %}
+            <div class="subtitle">        
+              {% if qualification.category or qualification.from %}
+                <span>
+                  {% capture subtitle %}<span class="category">{{ qualification.category }}</span>{% if qualification.category and qualification.from %}, {% endif %}<span class="from">{{ qualification.from }}</span>{% endcapture %}
+                  {{ subtitle }}
+                </span>
+                |
+              {% endif %}
+              <span class="date">
+                {% capture dates  %}{{ qualification.startDate }}{% if qualification.startDate and qualification.endDate%} - {% endif %} {{qualification.endDate}}{%endcapture%}
+                {{  dates }}            
+              </span>
+            </div>
+          {% endif %}
+
+          {% if qualification.summary %}
+            <div class="summary">
+              {{qualification.summary}}
+            </div>
+          {% endif %}
+
+          {% if qualification.highlights %}
+            <div class="highlights">          
+              <h4>Highlights</h4>
+              <ul>
+                {% for highlight in qualification.highlights %}
+                  <li class="highlight">
+                  {{ highlight }}
+                  </li>
+                 {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+
+          {% if qualification.keywords %}
+            <div class="keywords">
+              {% for keyword in qualification.keywords %}
+                <span class="keyword tag">
+                {{ keyword }}
+                </span>
+               {% endfor %}
+            </div>
+          {% endif %}
+
         </div>
-        <ul class="highlights">
-          <h4>Highlights</h4>
-          {% for highlight in qualification.highlights %}
-            <li class="highlight">
-            {{ highlight }}
-            </li>
-           {% endfor %}
-        </ul>
-        <div class="keywords">
-          {% for keyword in qualification.keywords %}
-            <span class="keyword tag">
-            {{ keyword }}
-            </span>
-           {% endfor %}
-        </div>
-      </div>
-    {% endfor %}
+      {% endfor %}
+    </div>
   </div>
-</div>
+{% endif %}
