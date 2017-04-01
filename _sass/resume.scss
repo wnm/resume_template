@@ -61,7 +61,7 @@
     font-style: italic;
   }
 
-  .entry .summary{
+  .entry .summary, .entry .description{
     padding: 10px 0;
   }
 
@@ -80,10 +80,18 @@
     max-width: 100%;
   }
 
+  .reference-entry .name{
+    font-size: 1.2em;
+  }
+
   .keyword{
     background-color: #ffe3e3;
     padding: 5px;
     margin-right: 5px;
+  }
+
+  .highlights h4, .roles h4, .curriculum h4{
+    margin-top: 15px;
   }
 
   blockquote {
