@@ -3,17 +3,11 @@
     <div class="col-12">
       <h2 class="section-heading">Recognition</h2>
 
-      {% if site.data.resume.recognition.summary %}
-        <div class="section-summary">
-          {{ site.data.resume.recognition.summary }}
-        </div>
-      {% endif %}
-
       {% for recognition_entry in site.data.resume.recognition.history %}
-        <div class="recognition_entry entry">
+        <div class="recognition_entry entry {% if recognition_entry == site.data.resume.recognition.history.last %}last{% endif %}">
 
-          {% if recognition_entry.title %} 
-            <div class="title">
+          <div class="row no-gutters title">
+            <div class="col-sm-8">
               <h3>
                 {% if recognition_entry.url %}
                   <a href="{{recognition_entry.url}}">{{recognition_entry.title}}</a>
@@ -22,40 +16,24 @@
                 {% endif %}
               </h3>
             </div>
-          {% endif %}
+            <div class="col-sm-4 right">
+              {% capture dates  %}{{ recognition_entry.startDate }}{% if recognition_entry.startDate.size > 0 and recognition_entry.endDate.size > 0 %} - {% endif %} {{recognition_entry.endDate}}{%endcapture%}
+              {{  dates }}
+            </div>          
+          </div>
 
-          {% if recognition_entry.category or recognition_entry.from or recognition_entry.startDate or recognition_entry.endDate %}
-            <div class="subtitle">        
-              {% if recognition_entry.category or recognition_entry.from %}
-                <span>
-                  {% capture subtitle %}<span class="category">{{ recognition_entry.category }}</span>{% if recognition_entry.category and recognition_entry.from %}, {% endif %}<span class="from">{{ recognition_entry.from }}</span>{% endcapture %}
-                  {{ subtitle }}
-                </span>
-                |
-              {% endif %}
-              <span class="date">
-                {% capture dates  %}{{ recognition_entry.startDate }}{% if recognition_entry.startDate and recognition_entry.endDate%} - {% endif %} {{recognition_entry.endDate}}{%endcapture%}
-                {{  dates }}          
-              </span>
+          <div class="row no-gutters subtitle">
+            <div class="col-sm-6">
+              {{ recognition_entry.category }}
             </div>
-          {% endif %}
+            <div class="col-sm-6 right">
+              {{ recognition_entry.from }}
+            </div>
+          </div>
 
           {% if recognition_entry.summary %}
             <div class="summary">
               {{recognition_entry.summary}}
-            </div>
-          {% endif %}
-
-          {% if recognition_entry.highlights %}
-            <div class="highlights">          
-              <h4>Highlights</h4>
-              <ul>
-                {% for highlight in recognition_entry.highlights %}
-                  <li class="highlight">
-                  {{ highlight }}
-                  </li>
-                 {% endfor %}
-              </ul>
             </div>
           {% endif %}
 

@@ -3,17 +3,10 @@
     <div class="col-12">
       <h2 class="section-heading">Writing</h2>
 
-      {% if site.data.resume.writing.summary %}
-        <div class="section-summary">
-          {{ site.data.resume.writing.summary }}
-        </div>
-      {% endif %}
-
       {% for writing_entry in site.data.resume.writing.history %}
-        <div class="writing_entry entry">
-
-          {% if writing_entry.title %}
-            <div class="title">
+        <div class="writing_entry entry {% if writing_entry == site.data.resume.writing.history.last %}last{% endif %}">
+          <div class="row no-gutters title">
+            <div class="col-sm-10">
               <h3>
                 {% if writing_entry.url %}
                   <a href="{{writing_entry.url}}">{{writing_entry.title}}</a>
@@ -22,39 +15,23 @@
                 {% endif %}
               </h3>
             </div>
-          {% endif %}
+            <div class="col-sm-2 right">
+              {{  writing_entry.date }}
+            </div>          
+          </div>
 
-          {% if writing_entry.category or writing_entry.publisher or writing_entry.date %}
-            <div class="subtitle">        
-              {% if writing_entry.category or writing_entry.publisher %}
-                <span>
-                  {% capture subtitle %}<span class="category">{{ writing_entry.category }}</span>{% if writing_entry.category and writing_entry.publisher %}, {% endif %}<span class="publisher">{{ writing_entry.publisher }}</span>{% endcapture %}
-                  {{ subtitle }}
-                </span>
-                |
-              {% endif %}
-              <span class="date">
-                {{  writing_entry.date }}            
-              </span>
+          <div class="row no-gutters subtitle">
+            <div class="col-sm-6">
+              {{ writing_entry.category }}
             </div>
-          {% endif %}
+            <div class="col-sm-6 right">
+              {{ writing_entry.publisher }}
+            </div>
+          </div>
 
           {% if writing_entry.summary %}
             <div class="summary">
               {{writing_entry.summary}}
-            </div>
-          {% endif %}
-
-          {% if writing_entry.highlights %}
-            <div class="highlights">          
-              <h4>Highlights</h4>
-              <ul>
-                {% for highlight in writing_entry.highlights %}
-                  <li class="highlight">
-                  {{ highlight }}
-                  </li>
-                 {% endfor %}
-              </ul>
             </div>
           {% endif %}
 

@@ -3,47 +3,40 @@
     <div class="col-12">
       <h2 class="section-heading">Work Experience</h2>
 
-      {% if site.data.resume.employment.summary %}
-        <div class="section-summary">
-          {{ site.data.resume.employment.summary }}
-        </div>
-      {% endif %}
-
       {% for job in site.data.resume.employment.history %}
-        <div class="employment-entry entry">
+        <div class="employment-entry entry {% if job == site.data.resume.employment.history.last %}last{% endif %}">
 
-          {% if job.employer %}
-            <div class="employer title">
-              <h3>
-                {% if job.url %}
-                  <a href="{{job.url}}">{{job.employer}}</a>
-                {% else %}
-                  {{job.employer}}
-                {% endif %}
-              </h3>
-            </div>
-          {% endif %}
-
-          {% if job.position or job.startDate or job.endDate %}
-            <div class="subtitle">        
-              <span class="position">
-                {{job.position}} 
-              </span>
-              {% if job.position %}
-              |
+        <div class="row no-gutters title">          
+          <div class="employer col-sm-6">
+            <h3>
+              {% if job.url %}
+                <a href="{{job.url}}">{{job.employer}}</a>
+              {% else %}
+                {{job.employer}}
               {% endif %}
-              <span class="date">
-                {% capture dates  %}{{ job.startDate }}{% if job.startDate and job.endDate%} - {% endif %} {{job.endDate}}{%endcapture%}
-                {{  dates }}            
-              </span>
-            </div>
-          {% endif %}
+            </h3>
+          </div>
 
-          {% if job.location %}
-            <div class="location">
+          <div class="col-sm-6 right">        
+            <span class="date">
+              {% capture dates  %}{{ job.startDate }}{% if job.startDate.size > 0 and job.endDate.size > 0 %} - {% endif %} {{job.endDate}}{%endcapture%}
+              {{  dates }}            
+            </span>
+          </div>
+        </div>
+        <div class="row no-gutters subtitle">
+          <div class="position col-sm-6">
+            {% if job.position %}
+              {{job.position}}
+            {% endif %}
+          </div>
+
+          <div class="location col-sm-6 right">
+            {% if job.location %}
               {{job.location}}
-            </div>
-          {% endif %}
+            {% endif %}
+          </div>
+        </div>
 
           {% if job.summary %}
             <div class="summary">
@@ -51,18 +44,6 @@
             </div>
           {% endif %}
 
-          {% if job.highlights %}
-            <div class="highlights">          
-              <h4>Highlights</h4>
-              <ul>
-                {% for highlight in job.highlights %}
-                  <li class="highlight">
-                  {{ highlight }}
-                  </li>
-                 {% endfor %}
-              </ul>
-            </div>
-          {% endif %}
 
           {% if job.keywords %}
             <div class="keywords">

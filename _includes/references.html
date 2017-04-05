@@ -3,14 +3,8 @@
     <div class="col-12">
       <h2 class="section-heading">References</h2>
 
-      {% if site.data.resume.references.summary %}
-        <div class="section-summary">
-          {{ site.data.resume.references.summary }}
-        </div>
-      {% endif %}
-
       {% for reference in site.data.resume.references.history %}
-        <div class="reference-entry entry">
+        <div class="reference-entry entry {% if reference == site.data.resume.references.history.last %}last{% endif %}">
           {% if reference.name %}
             <h3 class="name">{{reference.name}}</h3>
           {% endif %}

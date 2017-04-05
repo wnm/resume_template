@@ -2,23 +2,18 @@
   <div class="row interests section" id="interests">
     <div class="col-12">
       <h2 class="section-heading">Interests</h2>
-      {% if site.data.resume.interests.summary %}
-        <div class="section-summary">
-          {{ site.data.resume.interests.summary}}
-        </div>
-      {% endif %}
 
       {% for interest in site.data.resume.interests.list %}
-        <div class="interest-entry entry">
+        <div class="interest-entry entry {% if interest == site.data.resume.interests.history.last %}last{% endif %}">
           {% if interest.name %}
             <div class="name">
               {{interest.name}}
             </div>
           {% endif %}
 
-          {% if interest.description %}
+          {% if interest.summary %}
             <div class="description">
-              {{interest.description}}
+              {{interest.summary}}
             </div>
           {% endif %}
         </div>

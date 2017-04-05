@@ -2,15 +2,9 @@
   <div class="row skills section" id="skills">
     <div class="col-12">
       <h2 class="section-heading">Skills</h2>
-      
-      {% if site.data.resume.skills.summary %}
-        <div class="section-summary">
-          {{ site.data.resume.skills.summary }}
-        </div>
-      {% endif %}
 
       {% for skill in site.data.resume.skills.sets %}
-        <div class="skill-entry entry">
+        <div class="skill-entry entry {% if skill == site.data.resume.skills.history.last %}last{% endif %}">
 
           {% if skill.name %}
             <div class="name">
@@ -18,9 +12,9 @@
             </div>
           {% endif %}
 
-          {% if skill.description %}
-            <div class="description">
-              {{skill.description}}
+          {% if skill.summary %}
+            <div class="summary">
+              {{skill.summary}}
             </div>
           {% endif %}
 

@@ -3,79 +3,38 @@
     <div class="col-12">
       <h2 class="section-heading">Education</h2>
 
-      {% if site.data.resume.education.summary %}
-        <div class="section-summary">
-          {{ site.data.resume.education.summary}}
-        </div>
-      {% endif %}
-
       {% for school in site.data.resume.education.history %}
-        <div class="education-entry entry">
-          {% if school.institution %} 
-            <div class="title">
-              {% if school.institution %}
-                <h3>
-                  {% if school.url %}
-                    <a href="{{school.url}}">{{school.institution}}</a>
-                  {% else %}
-                    {{school.institution}}
-                  {% endif %}
-                </h3>
-              {% endif %}
-            </div>
-          {% endif %}
+        <div class="education-entry entry {% if school == site.data.resume.education.history.last %}last{% endif %}">
 
-          {% if school.fieldOfStudy or school.degree or school.grade or school.startDate or school.endDate %} 
-            <div class="subtitle">
+          <div class="row no-gutters title">
+            <div class="col-sm-6">
+              <h3>
+                {% if school.url %}
+                  <a href="{{school.url}}">{{school.institution}}</a>
+                {% else %}
+                  {{school.institution}}
+                {% endif %}
+              </h3>
+            </div>
+            <div class="col-sm-6 right">
+              {% capture dates  %}{{ school.startDate }}{% if school.startDate.size > 0 and school.endDate.size > 0 %} - {% endif %} {{school.endDate}}{%endcapture%}
+              {{  dates }}   
+            </div>          
+          </div>
+
+          <div class="row no-gutters subtitle">
+            <div class="col-sm-6">
               {% capture title %}<span class="field_of_study">{{ school.fieldOfStudy }}</span>{% if school.fieldOfStudy and school.degree %}, {% endif %}<span class="degree">{{ school.degree }}</span>{% if school.grade %} <span class="grade">({{ school.grade }})</span> {% endif %}{% endcapture %}
               {{ title }}
-              
-              {% if school.fieldOfStudy or school.degree or school.grade %} 
-                |
-              {% endif %}
-              
-              <span class="date">
-                {% capture dates  %}{{ school.startDate }}{% if school.startDate and school.endDate%} - {% endif %} {{school.endDate}}{%endcapture%}
-                {{  dates }}            
-              </span>
             </div>
-          {% endif %}
-
-          {% if school.location %}
-            <div class="location">
+            <div class="col-sm-6 right">
               {{school.location}}
             </div>
-          {% endif %}
-
+          </div>
+          
           {% if school.summary %}
             <div class="summary">
               {{school.summary}}
-            </div>
-          {% endif %}
-
-          {% if school.curriculum %}
-            <div class="curriculum">          
-              <h4>Curriculum</h4>
-              <ul>
-                {% for curriculum in school.curriculum %}
-                  <li class="curriculum-entry">
-                  {{ curriculum }}
-                  </li>
-                 {% endfor %}
-              </ul>
-            </div>
-          {% endif %}
-
-          {% if school.highlights %}
-            <div class="highlights">          
-              <h4>Highlights</h4>
-              <ul>
-                {% for highlight in school.highlights %}
-                  <li class="highlight">
-                  {{ highlight }}
-                  </li>
-                 {% endfor %}
-              </ul>
             </div>
           {% endif %}
 

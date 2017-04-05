@@ -3,17 +3,11 @@
     <div class="col-12">
       <h2 class="section-heading">Speaking</h2>
 
-      {% if site.data.resume.speaking.summary %}
-        <div class="section-summary">
-          {{ site.data.resume.speaking.summary }}
-        </div>
-      {% endif %}
-
       {% for speaking_entry in site.data.resume.speaking.history %}
-        <div class="speaking_entry entry">      
-          
-          {% if speaking_entry.title %}
-            <div class="title">
+        <div class="speaking_entry entry {% if speaking_entry == site.data.resume.speaking.history.last %}last{% endif %}">
+
+          <div class="row no-gutters title">
+            <div class="col-sm-10">
               <h3>
                 {% if speaking_entry.url %}
                   <a href="{{speaking_entry.url}}">{{speaking_entry.title}}</a>
@@ -22,37 +16,23 @@
                 {% endif %}
               </h3>
             </div>
-          {% endif %}
+            <div class="col-sm-2 right">
+              {{  speaking_entry.date }}
+            </div>          
+          </div>
 
-          {% if speaking_entry.event or speaking_entry.location or speaking_entry.date %}
-            <div class="subtitle">        
-              <span>
-                {% capture subtitle %}<span class="event">{{ speaking_entry.event }}</span>{% if speaking_entry.event and speaking_entry.location %}, {% endif %}<span class="location">{{ speaking_entry.location }}</span>{% endcapture %}
-                {{ subtitle }}
-              </span>
-              |
-              <span class="date">
-                {{  speaking_entry.date }}            
-              </span>
+          <div class="row no-gutters subtitle">
+            <div class="col-sm-6">
+              {{ speaking_entry.event }}
             </div>
-          {% endif %}
+            <div class="col-sm-6 right">
+              {{ speaking_entry.location }}
+            </div>
+          </div>
 
           {% if speaking_entry.summary %}
             <div class="summary">
               {{speaking_entry.summary}}
-            </div>
-          {% endif %}
-
-          {% if speaking_entry.highlights %}
-            <div class="highlights">          
-              <h4>Highlights</h4>
-              <ul>
-                {% for highlight in speaking_entry.highlights %}
-                  <li class="highlight">
-                  {{ highlight }}
-                  </li>
-                 {% endfor %}
-              </ul>
             </div>
           {% endif %}
 

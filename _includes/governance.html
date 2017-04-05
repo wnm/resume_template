@@ -3,16 +3,10 @@
     <div class="col-12">
       <h2 class="section-heading">Governance</h2>
 
-      {% if site.data.resume.governance.summary %}
-        <div class="section-summary">
-          {{ site.data.resume.governance.summary}}
-        </div>
-      {% endif %}
-
       {% for governance_entry in site.data.resume.governance.history %}
-        <div class="governance_entry entry">
-          {% if governance_entry.organization %}   
-            <div class="organization">
+        <div class="governance_entry entry {% if governance_entry == site.data.resume.governance.history.last %}last{% endif %}">
+          <div class="row no-gutters title">
+            <div class="col-sm-6">
               <h3>
                 {% if governance_entry.url %}
                   <a href="{{governance_entry.url}}">{{governance_entry.organization}}</a>
@@ -21,47 +15,23 @@
                 {% endif %}
               </h3>
             </div>
-          {% endif %}
+            <div class="col-sm-6 right">
+              {% capture dates  %}{{ governance_entry.startDate }}{% if governance_entry.startDate.size > 0 and governance_entry.endDate.size > 0 %} - {% endif %} {{governance_entry.endDate}}{%endcapture%}
+              {{  dates }}
+            </div>          
+          </div>
 
-          {% if governance_entry.category or governance_entry.location or governance_entry.endDate or governance_entry.startDate %}
-            <div class="subtitle">        
-              <span>
-                {% capture subtitle %}<span class="category">{{ governance_entry.category }}</span>{% if governance_entry.category and governance_entry.location %}, {% endif %}<span class="location">{{ governance_entry.location }}</span>{% endcapture %}
-                {{ subtitle }}
-              </span>
-              {% if governance_entry.category or governance_entry.location %}
-              |
-              {% endif %}
-              <span class="date">
-                {% capture dates  %}{{ governance_entry.startDate }}{% if governance_entry.startDate and governance_entry.endDate%} - {% endif %} {{governance_entry.endDate}}{%endcapture%}
-                {{  dates }}            
-              </span>
+          <div class="row no-gutters subtitle">
+            <div class="col-sm-6">
+              {{ governance_entry.category }}
             </div>
-          {% endif %}
+            <div class="col-sm-6 right">
+            </div>
+          </div>
 
           {% if governance_entry.summary %}
             <div class="summary">
               {{governance_entry.summary}}
-            </div>
-          {% endif %}
-
-          {% if governance_entry.roles %}
-            <div class="roles">
-              <h4>Roles</h4>
-              {{ governance_entry.roles | join: (", ") }}
-            </div>
-          {% endif %}
-
-          {% if governance_entry.highlights %}
-            <div class="highlights">          
-              <h4>Highlights</h4>
-              <ul>
-                {% for highlight in governance_entry.highlights %}
-                  <li class="highlight">
-                  {{ highlight }}
-                  </li>
-                 {% endfor %}
-              </ul>
             </div>
           {% endif %}
 
@@ -74,7 +44,6 @@
                {% endfor %}
             </div>
           {% endif %}
-
 
         </div>
       {% endfor %}

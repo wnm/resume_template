@@ -2,16 +2,11 @@
   <div class="row projects section" id="projects">
     <div class="col-12">
       <h2 class="section-heading">Projects</h2>
-      {% if site.data.resume.projects.summary %}
-        <div class="section-summary">
-          {{ site.data.resume.projects.summary }}
-        </div>
-      {% endif %}
 
       {% for project in site.data.resume.projects.history %}
-        <div class="project-entry entry">      
-          {% if project.title %}
-            <div class="title">
+        <div class="project-entry entry {% if project == site.data.resume.projects.history.last %}last{% endif %}">
+          <div class="row no-gutters title">
+            <div class="col-sm-6">
               <h3>
                 {% if project.url %}
                   <a href="{{project.url}}">{{project.title}}</a>
@@ -20,52 +15,24 @@
                 {% endif %}
               </h3>
             </div>
-          {% endif %}
+            <div class="col-sm-6 right">
+              {% capture dates  %}{{ project.startDate }}{% if project.startDate.size > 0 and project.endDate.size > 0 %} - {% endif %} {{project.endDate}}{%endcapture%}
+              {{  dates }}
+            </div>          
+          </div>
 
-          {% if project.category or project.startDate or project.endDate %}
-            <div class="subtitle">        
-              {% if project.category %}
-                <span class="category">
-                  {{project.category}} 
-                </span>
-                |
-              {% endif %}
-              <span class="date">
-                {% capture dates  %}{{ project.startDate }}{% if project.startDate and project.endDate%} - {% endif %} {{project.endDate}}{%endcapture%}
-                {{  dates }}            
-              </span>
+          <div class="row no-gutters subtitle">
+            <div class="col-sm-6">
+              {{project.category}} 
             </div>
-          {% endif %}
-
-          {% if project.repo %}
-            <div class="repo">
+            <div class="col-sm-6 right">
               <a href="{{project.repo}}">{{project.repo}}</a>
             </div>
-          {% endif %}
+          </div>
 
-          {% if project.description %}
-            <div class="description">
-              {{project.description}}
-            </div>
-          {% endif %}
-
-          {% if project.roles %}
-            <div class="roles">
-              <h4>Roles</h4>
-              {{ project.roles | join: (", ") }}
-            </div>
-          {% endif %}
-
-          {% if project.highlights %}
-            <div class="highlights">          
-              <h4>Highlights</h4>
-              <ul>
-                {% for highlight in project.highlights %}
-                  <li class="highlight">
-                  {{ highlight }}
-                  </li>
-                 {% endfor %}
-              </ul>
+          {% if project.summary %}
+            <div class="summary">
+              {{project.summary}}
             </div>
           {% endif %}
 

@@ -1,48 +1,13 @@
-{% if site.data.resume.disposition.size > 0 %}
+{% if site.data.resume.basics.disposition %}
   <div class="row disposition section" id="disposition">
     <div class="col-12">
       <h2 class="section-heading">Disposition</h2>
-      {% if site.data.resume.disposition.summary %}
-        <div class="section-summary">
-          {{ site.data.resume.disposition.summary}}
-        </div>
-      {% endif %}
 
-      {% if site.data.resume.disposition.travel %}
-        <div class="travel">
-          Percentage of time <strong>willing to travel</strong>: {{ site.data.resume.disposition.travel }}%
+      <div class="entry last">
+        <div class="summary">
+          {{ site.data.resume.basics.disposition }}
         </div>
-      {% endif %}
-
-      {% if site.data.resume.disposition.authorization %}
-        <div class="authorization">
-          <strong>Work authorization</strong>: {{ site.data.resume.disposition.authorization }}
-        </div>
-      {% endif %}
-
-      {% if site.data.resume.disposition.commitment %}
-        <div class="commitment">
-          Types of <strong>work commitment</strong> desired: {{ site.data.resume.disposition.commitment }}
-        </div>
-      {% endif %}
-
-      {% if site.data.resume.disposition.remote %}
-        <div class="remote">
-          Open to <strong>remote employment</strong> opportunities: {% if site.data.resume.disposition.remote %}Yes{% else %}No{% endif %}
-        </div>
-      {% endif %}
-
-      {% if site.data.resume.disposition.relocation.willing %}
-        <div class="remote">
-          Willing to <strong>relocate</strong>: {% if site.data.resume.disposition.relocation.willing %}Yes{% else %}No{% endif %}
-        </div>
-      {% endif %}
-      
-      {% if site.data.resume.disposition.relocation.willing and site.data.resume.disposition.relocation.destinations.size > 0 %}
-        <div class="destinations">
-          <strong>Preferred destinations</strong> for relocation: {{ site.data.resume.disposition.relocation.destinations | join: ", "}}
-        </div>
-      {% endif %}
+      </div>
     </div>
   </div>
 {% endif %}

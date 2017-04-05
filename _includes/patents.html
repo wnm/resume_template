@@ -3,17 +3,10 @@
     <div class="col-12">
       <h2 class="section-heading">Patents</h2>
 
-      {% if site.data.resume.patents.summary %}
-        <div class="section-summary">
-          {{ site.data.resume.patents.summary }}
-        </div>
-      {% endif %}
-
       {% for patent in site.data.resume.patents.history %}
-        <div class="patent entry">      
-
-          {% if patent.title or patent.number %}
-            <div class="title">
+        <div class="patent entry {% if patent == site.data.resume.patents.history.last %}last{% endif %}">
+          <div class="row no-gutters title">
+            <div class="col-12">
               <h3>
                 {% capture title %}<span class="patent-title">{{ patent.title }}</span>{% if patent.number %} <span class="number">({{ patent.number }})</span> {% endif %}{% endcapture %}
                 {% if patent.url %}
@@ -22,39 +15,21 @@
                   {{title}}
                 {% endif %}
               </h3>
-            </div>
-          {% endif %}
+            </div>       
+          </div>
 
-          {% if patent.status or patent.date %}
-            <div class="subtitle">        
-              {% if patent.status %}
-                <span class="status">
-                  {{ patent.status }}
-                </span>
-                |
-              {% endif %}
-              <span class="date">
-                {{  patent.date }}            
-              </span>
+          <div class="row no-gutters subtitle">
+            <div class="col-sm-6">
+              {{ patent.status }}
             </div>
-          {% endif %}
-
-          {% if patent.description %}
-            <div class="description">
-              {{patent.description}}
+            <div class="col-sm-6 right">
+              {{  patent.date }}
             </div>
-          {% endif %}
+          </div>
 
-          {% if patent.highlights %}
-            <div class="highlights">          
-              <h4>Highlights</h4>
-              <ul>
-                {% for highlight in patent.highlights %}
-                  <li class="highlight">
-                  {{ highlight }}
-                  </li>
-                 {% endfor %}
-              </ul>
+          {% if patent.summary %}
+            <div class="summary">
+              {{patent.summary}}
             </div>
           {% endif %}
 

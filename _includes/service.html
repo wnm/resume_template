@@ -3,17 +3,10 @@
     <div class="col-12">
       <h2 class="section-heading">Service</h2>
 
-      {% if site.data.resume.service.summary %}
-        <div class="section-summary">
-          {{ site.data.resume.service.summary }}
-        </div>
-      {% endif %}
-
       {% for service_entry in site.data.resume.service.history %}
-        <div class="service_entry-entry entry">
-
-          {% if service_entry.organization %}
-            <div class="organization">
+        <div class="service_entry-entry entry {% if service_entry == site.data.resume.service.history.last %}last{% endif %}">
+          <div class="row no-gutters title">
+            <div class="col-sm-8">
               <h3>
                 {% if service_entry.url %}
                   <a href="{{service_entry.url}}">{{service_entry.organization}}</a>
@@ -22,47 +15,24 @@
                 {% endif %}
               </h3>
             </div>
-          {% endif %}
+            <div class="col-sm-4 right">
+              {% capture dates  %}{{ service_entry.startDate }}{% if service_entry.startDate.size > 0 and service_entry.endDate.size > 0 %} - {% endif %} {{service_entry.endDate}}{%endcapture%}
+                {{  dates }}
+            </div>          
+          </div>
 
-          {% if service_entry.category or service_entry.location or service_entry.startDate or service_entry.endDate %}
-            <div class="subtitle">        
-              {% if service_entry.category or service_entry.location %}
-                <span>
-                  {% capture subtitle %}<span class="category">{{ service_entry.category }}</span>{% if service_entry.category and service_entry.location %}, {% endif %}<span class="location">{{ service_entry.location }}</span>{% endcapture %}
-                  {{ subtitle }}
-                </span>
-                |
-              {% endif %}
-              <span class="date">
-                {% capture dates  %}{{ service_entry.startDate }}{% if service_entry.startDate and service_entry.endDate%} - {% endif %} {{service_entry.endDate}}{%endcapture%}
-                {{  dates }}            
-              </span>
+          <div class="row no-gutters subtitle">
+            <div class="col-sm-6">
+              {{ service_entry.category }}
             </div>
-          {% endif %}
+            <div class="col-sm-6 right">
+              {{ service_entry.location }}
+            </div>
+          </div>
 
           {% if service_entry.summary %}
             <div class="summary">
               {{service_entry.summary}}
-            </div>
-          {% endif %}
-
-          {% if service_entry.roles %}
-            <div class="roles">
-              <h4>Roles</h4>
-              {{ service_entry.roles | join: (", ") }}
-            </div>
-          {% endif %}
-
-          {% if service_entry.highlights %}
-            <div class="highlights">          
-              <h4>Highlights</h4>
-              <ul>
-                {% for highlight in service_entry.highlights %}
-                  <li class="highlight">
-                  {{ highlight }}
-                  </li>
-                 {% endfor %}
-              </ul>
             </div>
           {% endif %}
 

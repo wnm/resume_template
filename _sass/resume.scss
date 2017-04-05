@@ -43,26 +43,53 @@
     color: #cb0000;
   }
 
-  .section, .entry{
+  .entry{
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #efefef;
+  }
+
+  .entry.last, .language-entry.last{
+    border-bottom: 0;
     margin-bottom: 50px;
   }
 
-  .section-summary{
-    margin-bottom: 25px;
+  .entry, .entry .subtitle, .entry .description, .entry .summary, .entry .keywords, .language-entry{
+    margin-left: 20px;
   }
 
   .section-heading{
     font-size: 1.5em;
-    margin-top: 20px;
+    margin: 20px 0;
     color: #cb0000;
+    border-bottom: 1px solid #cdcdcd;
+  }
+
+  .title .right{
+    margin-left: 20px;
+  }
+
+  @media screen and (min-width: 576px) {
+    .title .right{
+      margin-left: 0;
+    }
+
+    .right{
+      text-align: right;
+    }
   }
 
   .subtitle{
     font-style: italic;
   }
 
-  .entry .summary, .entry .description{
-    padding: 10px 0;
+  .entry .summary, .entry .description, .entry .keywords{
+    padding-top: 10px;
+  }
+
+  .keywords .keyword{
+    margin-top: 10px;
+    display: inline-block;
   }
 
   .name{
@@ -74,6 +101,10 @@
   .label{
     margin-top: 0px;
     font-size: 1em;
+  }
+
+  .sidebar{
+    padding-left: 50px;
   }
 
   .sidebar .image img{
@@ -97,7 +128,6 @@
   blockquote {
     background: #f9f9f9;
     border-left: 10px solid #ccc;
-    margin: 1.5em 10px;
     padding: 0.5em 10px;
     quotes: "\201C""\201D""\2018""\2019";
   }

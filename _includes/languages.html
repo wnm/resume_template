@@ -3,15 +3,8 @@
     <div class="col-12">
       <h2 class="section-heading">Languages</h2>
 
-      {% if site.data.resume.languages.summary %}
-        <div class="section-summary">
-          {{ site.data.resume.languages.summary }}
-        </div>
-      {% endif %}
-
       {% for language in site.data.resume.languages.list %}
-        <div class="language-entry entry">
-          
+        <div class="language-entry {% if language == site.data.resume.languages.list.last %}last{% endif %}">          
           {% if language.language %}  
             <div class="language">
               <strong>{{language.language}}:</strong>
@@ -22,6 +15,7 @@
               {% endif %}
             </div>
           {% endif %}
+        </div>
       {% endfor %}
     </div>
   </div>

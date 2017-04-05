@@ -3,16 +3,10 @@
     <div class="col-12">
       <h2 class="section-heading">Affiliation</h2>
 
-      {% if site.data.resume.affiliation.summary %}
-        <div class="section-summary">
-          {{ site.data.resume.affiliation.summary}}
-        </div>
-      {% endif %}
-
       {% for affiliation in site.data.resume.affiliation.history %}
-        <div class="affiliation-entry entry">
-          {% if affiliation.organization %}
-            <div class="organization">
+        <div class="affiliation-entry entry {% if affiliation == site.data.resume.affiliation.history.last %}last{% endif %}">
+          <div class="row no-gutters title">
+            <div class="organization col-sm-8">
               <h3>
                 {% if affiliation.url %}
                   <a href="{{affiliation.url}}">{{affiliation.organization}}</a>
@@ -21,47 +15,24 @@
                 {% endif %}
               </h3>
             </div>
-          {% endif %}
+            <div class="col-sm-4 right">
+              {% capture dates  %}{{ affiliation.startDate }}{% if affiliation.startDate.size > 0 and affiliation.endDate.size > 0 %} - {% endif %} {{affiliation.endDate}}{%endcapture%}
+              {{  dates }}
+            </div>          
+          </div>
 
-          {% if affiliation.category or affiliation.location or affiliation.startDate or affiliation.endDate %}
-            <div class="subtitle">        
-              <span>
-                {% capture subtitle %}<span class="category">{{ affiliation.category }}</span>{% if affiliation.category and affiliation.location %}, {% endif %}<span class="location">{{ affiliation.location }}</span>{% endcapture %}
-                {{ subtitle }}
-              </span>
-              {% if affiliation.category or affiliation.location %}
-                |
-              {% endif %}
-              <span class="date">
-                {% capture dates  %}{{ affiliation.startDate }}{% if affiliation.startDate and affiliation.endDate%} - {% endif %} {{affiliation.endDate}}{%endcapture%}
-                {{  dates }}            
-              </span>
+          <div class="row no-gutters subtitle">
+            <div class="col-sm-6">
+              {{ affiliation.category }}
             </div>
-          {% endif %}
+            <div class="col-sm-6 right">
+              {{ affiliation.location }}
+            </div>
+          </div>
 
           {% if affiliation.summary %}
             <div class="summary">
               {{affiliation.summary}}
-            </div>
-          {% endif %}
-
-          {% if affiliation.roles %}
-            <div class="roles">
-              <h4>Roles</h4>
-              {{ affiliation.roles | join: (", ") }}
-            </div>
-          {% endif %}
-
-          {% if affiliation.highlights %}
-            <div class="highlights">          
-              <h4>Highlights</h4>
-              <ul>
-                {% for highlight in affiliation.highlights %}
-                  <li class="highlight">
-                  {{ highlight }}
-                  </li>
-                 {% endfor %}
-              </ul>
             </div>
           {% endif %}
 
