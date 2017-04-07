@@ -1,10 +1,10 @@
 {% if site.data.resume.qualifications.size > 0 %}
-  <div class="row qualifications section" id="qualifications">
+  <div class="row qualifications section" id="qualifications" style="page-break-inside: avoid;">
     <div class="col-12">
       <h2 class="section-heading">Qualifications</h2>
 
-      {% for qualification in site.data.resume.qualifications.history %}
-        <div class="qualification-entry entry {% if qualification == site.data.resume.qualifications.history.last %}last{% endif %}">
+      {% for qualification in site.data.resume.qualifications %}
+        <div class="qualification-entry entry {% if qualification == site.data.resume.qualifications.last %}last{% endif %}" style="page-break-inside: avoid;">
           <div class="row no-gutters title">
             <div class="col-sm-8">
               <h3>

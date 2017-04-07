@@ -1,10 +1,10 @@
 {% if site.data.resume.skills.size > 0 %}
-  <div class="row skills section" id="skills">
+  <div class="row skills section" id="skills" style="page-break-inside: avoid;">
     <div class="col-12">
       <h2 class="section-heading">Skills</h2>
 
-      {% for skill in site.data.resume.skills.sets %}
-        <div class="skill-entry entry {% if skill == site.data.resume.skills.history.last %}last{% endif %}">
+      {% for skill in site.data.resume.skills %}
+        <div class="skill-entry entry {% if skill == site.data.resume.skills.last %}last{% endif %}" style="page-break-inside: avoid;">
 
           {% if skill.name %}
             <div class="name">

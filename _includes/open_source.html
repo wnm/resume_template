@@ -1,10 +1,10 @@
 {% if site.data.resume.openSource.size > 0 %}
-  <div class="row open_source section" id="open_source">
+  <div class="row open_source section" id="open_source" style="page-break-inside: avoid;">
     <div class="col-12">
       <h2 class="section-heading">Open Source</h2>
 
-      {% for open_source in site.data.resume.openSource.history %}
-        <div class="open_source-entry entry {% if open_source == site.data.resume.openSource.history.last %}last{% endif %}">
+      {% for open_source in site.data.resume.openSource %}
+        <div class="open_source-entry entry {% if open_source == site.data.resume.openSource.last %}last{% endif %}" style="page-break-inside: avoid;">
           <div class="row no-gutters title">
             <div class="col-sm-6">
               <h3>

@@ -3,8 +3,8 @@
     <div class="col-12">
       <h2 class="section-heading">Education</h2>
 
-      {% for school in site.data.resume.education.history %}
-        <div class="education-entry entry {% if school == site.data.resume.education.history.last %}last{% endif %}">
+      {% for school in site.data.resume.education %}
+        <div class="education-entry entry {% if school == site.data.resume.education.last %}last{% endif %}">
 
           <div class="row no-gutters title">
             <div class="col-sm-6">

@@ -1,10 +1,10 @@
 {% if site.data.resume.governance.size > 0 %}
-  <div class="row governance section" id="governance">
+  <div class="row governance section" id="governance" style="page-break-inside: avoid;">
     <div class="col-12">
       <h2 class="section-heading">Governance</h2>
 
-      {% for governance_entry in site.data.resume.governance.history %}
-        <div class="governance_entry entry {% if governance_entry == site.data.resume.governance.history.last %}last{% endif %}">
+      {% for governance_entry in site.data.resume.governance %}
+        <div class="governance_entry entry {% if governance_entry == site.data.resume.governance.last %}last{% endif %}" style="page-break-inside: avoid;">
           <div class="row no-gutters title">
             <div class="col-sm-6">
               <h3>

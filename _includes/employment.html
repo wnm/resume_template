@@ -1,10 +1,10 @@
 {% if site.data.resume.employment.size > 0 %}
-  <div class="row employment section" id="employment">
+  <div class="row employment section" id="employment" style="page-break-inside: avoid;">
     <div class="col-12">
       <h2 class="section-heading">Work Experience</h2>
 
-      {% for job in site.data.resume.employment.history %}
-        <div class="employment-entry entry {% if job == site.data.resume.employment.history.last %}last{% endif %}">
+      {% for job in site.data.resume.employment %}
+        <div class="employment-entry entry {% if job == site.data.resume.employment.last %}last{% endif %}" style="page-break-inside: avoid;">
 
         <div class="row no-gutters title">          
           <div class="employer col-sm-6">
@@ -39,19 +39,24 @@
         </div>
 
           {% if job.summary %}
-            <div class="summary">
-              {{job.summary}}
+            <div class="summary row">
+              <div class="col-12">
+                {{job.summary}}
+              </div>
             </div>
           {% endif %}
 
 
           {% if job.keywords %}
-            <div class="keywords">
-              {% for keyword in job.keywords %}
-                <span class="keyword tag">
-                {{ keyword }}
-                </span>
-               {% endfor %}
+            <div class="keywords row">
+              <div class="col-12">
+                
+                {% for keyword in job.keywords %}
+                  <span class="keyword tag">
+                  {{ keyword }}
+                  </span>
+                 {% endfor %}
+              </div>
             </div>
           {% endif %}
 

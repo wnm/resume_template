@@ -1,10 +1,10 @@
 {% if site.data.resume.references.size > 0 %}
-  <div class="row references section" id="references">
+  <div class="row references section" id="references" style="page-break-inside: avoid;">
     <div class="col-12">
       <h2 class="section-heading">References</h2>
 
-      {% for reference in site.data.resume.references.history %}
-        <div class="reference-entry entry {% if reference == site.data.resume.references.history.last %}last{% endif %}">
+      {% for reference in site.data.resume.references %}
+        <div class="reference-entry entry {% if reference == site.data.resume.references.last %}last{% endif %}" style="page-break-inside: avoid;">
           {% if reference.name %}
             <h3 class="name">{{reference.name}}</h3>
           {% endif %}

@@ -1,10 +1,10 @@
 {% if site.data.resume.interests.size > 0 %}
-  <div class="row interests section" id="interests">
+  <div class="row interests section" id="interests" style="page-break-inside: avoid;">
     <div class="col-12">
       <h2 class="section-heading">Interests</h2>
 
-      {% for interest in site.data.resume.interests.list %}
-        <div class="interest-entry entry {% if interest == site.data.resume.interests.history.last %}last{% endif %}">
+      {% for interest in site.data.resume.interests %}
+        <div class="interest-entry entry {% if interest == site.data.resume.interests.last %}last{% endif %}" style="page-break-inside: avoid;">
           {% if interest.name %}
             <div class="name">
               {{interest.name}}

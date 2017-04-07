@@ -1,10 +1,10 @@
 {% if site.data.resume.languages.size > 0 %}
-  <div class="row languages section" id="languages">
+  <div class="row languages section" id="languages" style="page-break-inside: avoid;">
     <div class="col-12">
       <h2 class="section-heading">Languages</h2>
 
-      {% for language in site.data.resume.languages.list %}
-        <div class="language-entry {% if language == site.data.resume.languages.list.last %}last{% endif %}">          
+      {% for language in site.data.resume.languages %}
+        <div class="language-entry {% if language == site.data.resume.languages.last %}last{% endif %}">          
           {% if language.language %}  
             <div class="language">
               <strong>{{language.language}}:</strong>

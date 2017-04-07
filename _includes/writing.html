@@ -1,10 +1,10 @@
 {% if site.data.resume.writing.size > 0 %}
-  <div class="row writing section" id="writing">
+  <div class="row writing section" id="writing" style="page-break-inside: avoid;">
     <div class="col-12">
       <h2 class="section-heading">Writing</h2>
 
-      {% for writing_entry in site.data.resume.writing.history %}
-        <div class="writing_entry entry {% if writing_entry == site.data.resume.writing.history.last %}last{% endif %}">
+      {% for writing_entry in site.data.resume.writing %}
+        <div class="writing_entry entry {% if writing_entry == site.data.resume.writing.last %}last{% endif %}" style="page-break-inside: avoid;">
           <div class="row no-gutters title">
             <div class="col-sm-10">
               <h3>

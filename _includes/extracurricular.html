@@ -1,10 +1,10 @@
 {% if site.data.resume.extracurricular.size > 0 %}
-  <div class="row extracurricular section" id="extracurricular">
+  <div class="row extracurricular section" id="extracurricular" style="page-break-inside: avoid;">
     <div class="col-12">
       <h2 class="section-heading">Extracurricular</h2>
 
-      {% for extracurricular in site.data.resume.extracurricular.history %}
-        <div class="extracurricular entry {% if extracurricular == site.data.resume.extracurricular.history.last %}last{% endif %}">
+      {% for extracurricular in site.data.resume.extracurricular %}
+        <div class="extracurricular entry {% if extracurricular == site.data.resume.extracurricular.last %}last{% endif %}" style="page-break-inside: avoid;">
           <div class="row no-gutters title">
             <div class="col-sm-6">
               <h3>

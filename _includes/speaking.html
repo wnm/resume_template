@@ -1,10 +1,10 @@
 {% if site.data.resume.speaking.size > 0 %}
-  <div class="row speaking section" id="speaking">
+  <div class="row speaking section" id="speaking" style="page-break-inside: avoid;">
     <div class="col-12">
       <h2 class="section-heading">Speaking</h2>
 
-      {% for speaking_entry in site.data.resume.speaking.history %}
-        <div class="speaking_entry entry {% if speaking_entry == site.data.resume.speaking.history.last %}last{% endif %}">
+      {% for speaking_entry in site.data.resume.speaking %}
+        <div class="speaking_entry entry {% if speaking_entry == site.data.resume.speaking.last %}last{% endif %}" style="page-break-inside: avoid;">
 
           <div class="row no-gutters title">
             <div class="col-sm-10">

@@ -1,10 +1,10 @@
 {% if site.data.resume.patents.size > 0 %}
-  <div class="row patents section" id="patents">
+  <div class="row patents section" id="patents" style="page-break-inside: avoid;">
     <div class="col-12">
       <h2 class="section-heading">Patents</h2>
 
-      {% for patent in site.data.resume.patents.history %}
-        <div class="patent entry {% if patent == site.data.resume.patents.history.last %}last{% endif %}">
+      {% for patent in site.data.resume.patents %}
+        <div class="patent entry {% if patent == site.data.resume.patents.last %}last{% endif %}" style="page-break-inside: avoid;">
           <div class="row no-gutters title">
             <div class="col-12">
               <h3>

@@ -1,10 +1,10 @@
 {% if site.data.resume.service.size > 0 %}
-  <div class="row service section" id="service">
+  <div class="row service section" id="service" style="page-break-inside: avoid;">
     <div class="col-12">
       <h2 class="section-heading">Service</h2>
 
-      {% for service_entry in site.data.resume.service.history %}
-        <div class="service_entry-entry entry {% if service_entry == site.data.resume.service.history.last %}last{% endif %}">
+      {% for service_entry in site.data.resume.service %}
+        <div class="service_entry-entry entry {% if service_entry == site.data.resume.service.last %}last{% endif %}" style="page-break-inside: avoid;">
           <div class="row no-gutters title">
             <div class="col-sm-8">
               <h3>

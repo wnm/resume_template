@@ -1,10 +1,10 @@
 {% if site.data.resume.projects.size > 0 %}
-  <div class="row projects section" id="projects">
+  <div class="row projects section" id="projects" style="page-break-inside: avoid;">
     <div class="col-12">
       <h2 class="section-heading">Projects</h2>
 
-      {% for project in site.data.resume.projects.history %}
-        <div class="project-entry entry {% if project == site.data.resume.projects.history.last %}last{% endif %}">
+      {% for project in site.data.resume.projects %}
+        <div class="project-entry entry {% if project == site.data.resume.projects.last %}last{% endif %}" style="page-break-inside: avoid;">
           <div class="row no-gutters title">
             <div class="col-sm-6">
               <h3>

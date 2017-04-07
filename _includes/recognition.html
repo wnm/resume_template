@@ -1,10 +1,10 @@
 {% if site.data.resume.recognition.size > 0 %}
-  <div class="row recognition section" id="recognition">
+  <div class="row recognition section" id="recognition" style="page-break-inside: avoid;">
     <div class="col-12">
       <h2 class="section-heading">Recognition</h2>
 
-      {% for recognition_entry in site.data.resume.recognition.history %}
-        <div class="recognition_entry entry {% if recognition_entry == site.data.resume.recognition.history.last %}last{% endif %}">
+      {% for recognition_entry in site.data.resume.recognition %}
+        <div class="recognition_entry entry {% if recognition_entry == site.data.resume.recognition.last %}last{% endif %}" style="page-break-inside: avoid;">
 
           <div class="row no-gutters title">
             <div class="col-sm-8">

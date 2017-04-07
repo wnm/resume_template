@@ -3,9 +3,9 @@
     <div class="col-12">
       <h2 class="section-heading">Affiliation</h2>
 
-      {% for affiliation in site.data.resume.affiliation.history %}
-        <div class="affiliation-entry entry {% if affiliation == site.data.resume.affiliation.history.last %}last{% endif %}">
-          <div class="row no-gutters title">
+      {% for affiliation in site.data.resume.affiliation %}
+        <div class="affiliation-entry entry {% if affiliation == site.data.resume.affiliation.last %}last{% endif %}">
+          <div class="row title">
             <div class="organization col-sm-8">
               <h3>
                 {% if affiliation.url %}
@@ -21,7 +21,7 @@
             </div>          
           </div>
 
-          <div class="row no-gutters subtitle">
+          <div class="row subtitle">
             <div class="col-sm-6">
               {{ affiliation.category }}
             </div>
@@ -31,15 +31,15 @@
           </div>
 
           {% if affiliation.summary %}
-            <div class="summary">
-              {{affiliation.summary}}
-            </div>
+              <div class="summary row">
+                {{affiliation.summary}}
+              </div>
           {% endif %}
 
           {% if affiliation.keywords %}
-            <div class="keywords">
+            <div class="keywords row">
               {% for keyword in affiliation.keywords %}
-                <span class="keyword tag">
+                <span class="keyword tag col-12">
                 {{ keyword }}
                 </span>
                {% endfor %}
