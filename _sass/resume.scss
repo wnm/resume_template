@@ -1,10 +1,43 @@
+@import 'grid';
 @media print {
+  html {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+  }
+
+  html, body{
+    font-size: 12px !important;
+    -webkit-print-color-adjust: exact;
+  }
   .noprint{
     display: none !important;
   }
 
-  .section .entry{
+  .section, .section .entry{
     page-break-inside: avoid;
+  }
+
+  .entry.last, .language-entry.last{
+    margin-bottom: 10px !important;
+  }
+
+  .entry{
+    margin-bottom: 5px !important;
+    padding-bottom: 10px !important;
+  }
+
+  .subtitle, .entry .summary, .entry .keywords{
+    padding-bottom: 4px !important;
+  }
+
+  .right{
+    text-align: right;
   }
 }
 
@@ -25,8 +58,7 @@
 }
 
 @media screen, print {
-  @import 'bootstrap-grid';
-  @import 'bootstrap-reboot';
+  @import 'reboot';
   @import url('https://fonts.googleapis.com/css?family=PT+Serif');
   body{
     font-family: 'PT Serif', serif;
@@ -66,29 +98,18 @@
   }
 
   .title .right{
-    margin-left: 20px;
-  }
-
-  @media screen and (min-width: 576px) {
-    .title .right{
-      margin-left: 0;
-    }
-
-    .right{
-      text-align: right;
-    }
+    padding-left: 20px;
   }
 
   .subtitle{
     font-style: italic;
   }
 
-  .entry .summary, .entry .description, .entry .keywords{
-    padding-top: 10px;
+  .subtitle, .entry .summary, .entry .keywords{
+    padding-bottom: 10px;
   }
 
   .keywords .keyword{
-    margin-top: 10px;
     display: inline-block;
   }
 
@@ -121,10 +142,6 @@
     margin-right: 5px;
   }
 
-  .highlights h4, .roles h4, .curriculum h4{
-    margin-top: 15px;
-  }
-
   blockquote {
     background: #f9f9f9;
     border-left: 10px solid #ccc;
@@ -144,4 +161,23 @@
   blockquote p {
     display: inline;
   }
+
+  .footer{
+    margin: 40px 0 20px 0;
+  }
+
+  .footer small, .footer small a{
+    color: grey;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .right{
+    text-align: right;
+  }
+}
+
+@media screen {
+  .footer {
+    display: block !important; }
 }
