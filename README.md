@@ -15,6 +15,12 @@ For example:
 - My resume repo name is [wnm.github.io](https://github.com/wnm/wnm.github.io)
 - My resume url is [https://wnm.github.io](https://wnm.github.io/)
 
+# Local preview
+
+1. Clone your new repo locally
+2. run `bundle install`
+3. run `jekyll serve`
+
 # Demo:
 (click on image to see all sections)
 
