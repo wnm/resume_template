@@ -1,5 +1,63 @@
 ---
-layout: resume
+layout: null
 ---
 
-{% include resume.html %}
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Resume of {{ site.data.resume.basics.name }}</title>
+    <meta name="description" content="{{ site.data.resume.basics.summary }}">
+
+    <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
+  </head>
+
+
+  <body>
+    <div class="container resume">
+      <div class="row">
+        <div class="col-md-8 main">
+          {% include basics.html %}
+          <div class="sm-only section">
+            {% include contact.html %}
+            {% include social.html %}
+          </div>
+          {% include disposition.html %}
+          {% include employment.html %}
+          {% include education.html %}
+          {% include references.html %}
+          {% include projects.html %}
+          {% include open_source.html %}
+          {% include qualifications.html %}
+          {% include skills.html %}
+          {% include recognition.html %}
+          {% include writing.html %}
+          {% include reading.html %}
+          {% include speaking.html %}
+          {% include patents.html %}
+          {% include languages.html %}
+          {% include extracurricular.html %}
+          {% include affiliation.html %}
+          {% include governance.html %}
+          {% include service.html %}
+          {% include interests.html %}
+        </div>
+        <div class="col-md-3 col-md-offset-1 sidebar noprint">
+          <div class="md-only">
+            {% include image.html %}
+            {% include contact.html %}
+            {% include social.html %}
+          </div>
+        </div>
+      </div>
+      <div class="row footer noprint" style="display: none;">
+        {% include footer.html %}
+      </div>
+    </div>
+  </body>
+</html>

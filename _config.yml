@@ -29,5 +29,5 @@ gems:
 exclude:
   - Gemfile
   - Gemfile.lock
-sass:
-  style: compressed
+# sass:
+#   style: compressed
